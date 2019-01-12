@@ -1,0 +1,81 @@
+16-08-2018 22:41:31.530 [main] INFO  com.ljproject.LjprojectApplication.logStarting - Starting LjprojectApplication on DESKTOP-0U0CQ8J with PID 8484 (C:\Users\Nitesh\eclipse-workspace\ljprojects\target\classes started by Nitesh in C:\Users\Nitesh\eclipse-workspace\ljprojects)
+16-08-2018 22:41:31.530 [main] INFO  com.ljproject.LjprojectApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+16-08-2018 22:41:31.628 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext.prepareRefresh - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@62150f9e: startup date [Thu Aug 16 22:41:31 PDT 2018]; root of context hierarchy
+16-08-2018 22:41:35.263 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$142ebcf9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+16-08-2018 22:41:36.542 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer.initialize - Tomcat initialized with port(s): 8080 (http)
+16-08-2018 22:41:36.572 [main] INFO  o.a.catalina.core.StandardService.log - Starting service Tomcat
+16-08-2018 22:41:36.572 [main] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet Engine: Apache Tomcat/8.5.6
+16-08-2018 22:41:37.318 [localhost-startStop-1] INFO  org.apache.jasper.servlet.TldScanner.log - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+16-08-2018 22:41:37.318 [localhost-startStop-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/].log - Initializing Spring embedded WebApplicationContext
+16-08-2018 22:41:37.583 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean.configure - Mapping filter: 'characterEncodingFilter' to: [/*]
+16-08-2018 22:41:37.596 [localhost-startStop-1] INFO  o.s.b.w.s.DelegatingFilterProxyRegistrationBean.configure - Mapping filter: 'springSecurityFilterChain' to: [/*]
+16-08-2018 22:41:37.597 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean.onStartup - Mapping servlet: 'dispatcherServlet' to [/]
+16-08-2018 22:41:37.684 [main] INFO  o.s.j.d.DriverManagerDataSource.setDriverClassName - Loaded JDBC driver: com.mysql.jdbc.Driver
+16-08-2018 22:41:38.028 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory - Building JPA container EntityManagerFactory for persistence unit 'default'
+16-08-2018 22:41:38.059 [main] INFO  o.h.jpa.internal.util.LogHelper.logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+16-08-2018 22:41:38.241 [main] INFO  org.hibernate.Version.logVersion - HHH000412: Hibernate Core {5.0.11.Final}
+16-08-2018 22:41:38.241 [main] INFO  org.hibernate.cfg.Environment.<clinit> - HHH000206: hibernate.properties not found
+16-08-2018 22:41:38.241 [main] INFO  org.hibernate.cfg.Environment.buildBytecodeProvider - HHH000021: Bytecode provider name : javassist
+16-08-2018 22:41:38.352 [main] INFO  o.h.annotations.common.Version.<clinit> - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+16-08-2018 22:41:38.987 [main] INFO  org.hibernate.dialect.Dialect.<init> - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+16-08-2018 22:41:39.021 [main] INFO  o.h.e.j.e.i.LobCreatorBuilderImpl.useContextualLobCreation - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+16-08-2018 22:41:40.792 [main] INFO  o.h.tool.hbm2ddl.SchemaUpdate.execute - HHH000228: Running hbm2ddl schema update
+16-08-2018 22:41:41.924 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+16-08-2018 22:41:42.888 [main] INFO  org.hibernate.dialect.Dialect.<init> - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+16-08-2018 22:41:42.904 [main] INFO  o.h.e.j.e.i.LobCreatorBuilderImpl.useContextualLobCreation - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+16-08-2018 22:41:43.439 [main] INFO  o.s.s.web.DefaultSecurityFilterChain.<init> - Creating filter chain: Ant [pattern='/resources/**'], []
+16-08-2018 22:41:43.453 [main] INFO  o.s.s.web.DefaultSecurityFilterChain.<init> - Creating filter chain: Ant [pattern='/static/**'], []
+16-08-2018 22:41:43.454 [main] INFO  o.s.s.web.DefaultSecurityFilterChain.<init> - Creating filter chain: Ant [pattern='/css/**'], []
+16-08-2018 22:41:43.454 [main] INFO  o.s.s.web.DefaultSecurityFilterChain.<init> - Creating filter chain: Ant [pattern='/js/**'], []
+16-08-2018 22:41:43.455 [main] INFO  o.s.s.web.DefaultSecurityFilterChain.<init> - Creating filter chain: Ant [pattern='/images/**'], []
+16-08-2018 22:41:43.564 [main] INFO  o.s.s.web.DefaultSecurityFilterChain.<init> - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@29b5533, org.springframework.security.web.context.SecurityContextPersistenceFilter@22fb9a2c, org.springframework.security.web.header.HeaderWriterFilter@1b3bec6c, org.springframework.security.web.authentication.logout.LogoutFilter@819fb19, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1552da16, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1b8fa2fa, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d8e9d3e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7608a838, org.springframework.security.web.session.SessionManagementFilter@2154652c, org.springframework.security.web.access.ExceptionTranslationFilter@79d63a4f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5f0677f3]
+16-08-2018 22:41:44.458 [main] INFO  o.s.b.a.s.AuthenticationManagerConfiguration.configure - 
+
+Using default security password: a7f3553a-f18f-4076-8e15-56406c0dcc6d
+
+16-08-2018 22:41:44.697 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter.afterSingletonsInstantiated - Registering beans for JMX exposure on startup
+16-08-2018 22:41:44.931 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer.start - Tomcat started on port(s): 8080 (http)
+16-08-2018 22:41:44.947 [main] INFO  com.ljproject.LjprojectApplication.logStarted - Started LjprojectApplication in 14.263 seconds (JVM running for 14.73)
+16-08-2018 22:42:05.585 [http-nio-8080-exec-3] INFO  o.a.c.c.C.[Tomcat].[localhost].[/].log - Initializing Spring FrameworkServlet 'dispatcherServlet'
+16-08-2018 23:10:29.242 [main] INFO  com.ljproject.LjprojectApplication.logStarting - Starting LjprojectApplication on DESKTOP-0U0CQ8J with PID 9472 (C:\Users\Nitesh\eclipse-workspace\ljprojects\target\classes started by Nitesh in C:\Users\Nitesh\eclipse-workspace\ljprojects)
+16-08-2018 23:10:29.257 [main] INFO  com.ljproject.LjprojectApplication.logStartupProfileInfo - The following profiles are active: dev
+16-08-2018 23:10:29.351 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext.prepareRefresh - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@62150f9e: startup date [Thu Aug 16 23:10:29 PDT 2018]; root of context hierarchy
+16-08-2018 23:10:32.206 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$142ebcf9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+16-08-2018 23:10:33.276 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer.initialize - Tomcat initialized with port(s): 8080 (http)
+16-08-2018 23:10:33.301 [main] INFO  o.a.catalina.core.StandardService.log - Starting service Tomcat
+16-08-2018 23:10:33.301 [main] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet Engine: Apache Tomcat/8.5.6
+16-08-2018 23:10:34.614 [localhost-startStop-1] INFO  org.apache.jasper.servlet.TldScanner.log - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+16-08-2018 23:10:34.910 [localhost-startStop-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/].log - Initializing Spring embedded WebApplicationContext
+16-08-2018 23:10:35.610 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean.configure - Mapping filter: 'characterEncodingFilter' to: [/*]
+16-08-2018 23:10:35.768 [localhost-startStop-1] INFO  o.s.b.w.s.DelegatingFilterProxyRegistrationBean.configure - Mapping filter: 'springSecurityFilterChain' to: [/*]
+16-08-2018 23:10:35.768 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean.onStartup - Mapping servlet: 'dispatcherServlet' to [/]
+16-08-2018 23:10:35.987 [main] INFO  o.s.j.d.DriverManagerDataSource.setDriverClassName - Loaded JDBC driver: com.mysql.jdbc.Driver
+16-08-2018 23:10:37.196 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory - Building JPA container EntityManagerFactory for persistence unit 'default'
+16-08-2018 23:10:37.333 [main] INFO  o.h.jpa.internal.util.LogHelper.logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+16-08-2018 23:10:37.562 [main] INFO  org.hibernate.Version.logVersion - HHH000412: Hibernate Core {5.0.11.Final}
+16-08-2018 23:10:37.562 [main] INFO  org.hibernate.cfg.Environment.<clinit> - HHH000206: hibernate.properties not found
+16-08-2018 23:10:37.562 [main] INFO  org.hibernate.cfg.Environment.buildBytecodeProvider - HHH000021: Bytecode provider name : javassist
+16-08-2018 23:10:37.656 [main] INFO  o.h.annotations.common.Version.<clinit> - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+16-08-2018 23:10:38.273 [main] INFO  org.hibernate.dialect.Dialect.<init> - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+16-08-2018 23:10:38.336 [main] INFO  o.h.e.j.e.i.LobCreatorBuilderImpl.useContextualLobCreation - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+16-08-2018 23:10:39.224 [main] INFO  o.h.tool.hbm2ddl.SchemaUpdate.execute - HHH000228: Running hbm2ddl schema update
+16-08-2018 23:10:40.483 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+16-08-2018 23:10:41.227 [main] INFO  org.hibernate.dialect.Dialect.<init> - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+16-08-2018 23:10:41.234 [main] INFO  o.h.e.j.e.i.LobCreatorBuilderImpl.useContextualLobCreation - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+16-08-2018 23:10:41.748 [main] INFO  o.s.s.web.DefaultSecurityFilterChain.<init> - Creating filter chain: Ant [pattern='/resources/**'], []
+16-08-2018 23:10:41.756 [main] INFO  o.s.s.web.DefaultSecurityFilterChain.<init> - Creating filter chain: Ant [pattern='/static/**'], []
+16-08-2018 23:10:41.756 [main] INFO  o.s.s.web.DefaultSecurityFilterChain.<init> - Creating filter chain: Ant [pattern='/css/**'], []
+16-08-2018 23:10:41.757 [main] INFO  o.s.s.web.DefaultSecurityFilterChain.<init> - Creating filter chain: Ant [pattern='/js/**'], []
+16-08-2018 23:10:41.757 [main] INFO  o.s.s.web.DefaultSecurityFilterChain.<init> - Creating filter chain: Ant [pattern='/images/**'], []
+16-08-2018 23:10:41.867 [main] INFO  o.s.s.web.DefaultSecurityFilterChain.<init> - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@29b5533, org.springframework.security.web.context.SecurityContextPersistenceFilter@22fb9a2c, org.springframework.security.web.header.HeaderWriterFilter@1b3bec6c, org.springframework.security.web.authentication.logout.LogoutFilter@819fb19, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1552da16, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1b8fa2fa, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d8e9d3e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7608a838, org.springframework.security.web.session.SessionManagementFilter@2154652c, org.springframework.security.web.access.ExceptionTranslationFilter@79d63a4f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5f0677f3]
+16-08-2018 23:10:42.755 [main] INFO  o.s.b.a.s.AuthenticationManagerConfiguration.configure - 
+
+Using default security password: e95b2ba9-7f52-429c-84c5-d27b0d31cadb
+
+16-08-2018 23:10:42.921 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter.afterSingletonsInstantiated - Registering beans for JMX exposure on startup
+16-08-2018 23:10:43.133 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer.start - Tomcat started on port(s): 8080 (http)
+16-08-2018 23:10:43.141 [main] INFO  com.ljproject.LjprojectApplication.logStarted - Started LjprojectApplication in 14.573 seconds (JVM running for 15.101)

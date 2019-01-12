@@ -1,0 +1,75 @@
+ add html code in login jsp for old design 
+ in <body> tag so you get old login design
+ 
+  <div id="mainWrapper">
+            <div class="login-container">
+                <div class="login-card">
+                    <div class="login-form">
+                        <c:url var="loginUrl" value="/login" />
+                        <form action="${loginUrl}" method="post" class="form-horizontal">
+                            <c:if test="${param.error != null}">
+                                <div class="alert alert-danger">
+                                    <p>Invalid username and password.</p>
+                                </div>
+                            </c:if>
+                            <c:if test="${param.logout != null}">
+                                <div class="alert alert-success">
+                                    <p>You have been logged out successfully.</p>
+                                </div>
+                            </c:if>
+                            <div class="input-group input-sm">
+                                <label class="input-group-addon" for="email"><i class="fa fa-user"></i></label>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Enter Username" required>
+                            </div>
+                            <div class="input-group input-sm">
+                                <label class="input-group-addon" for="password"><i class="fa fa-lock"></i></label> 
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+                            </div>
+                            <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
+                                 
+                            <div class="form-actions">
+                                <input type="submit"
+                                    class="btn btn-block btn-primary btn-default" value="Log in">
+                            </div>
+                            
+                              <a href="<c:url value='/forgotPassword' />">forgot password?</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+  =======================================================================================================================================================
+ add html code in forgotpassword jsp for old design 
+ in <body> tag so you get old forgotpassdessign design
+     
+     <div id="mainWrapper">
+            <div class="login-container">
+                      <div class="login-form">
+    
+        <div class="well lead">Forgot Password</div>
+        
+        <form:form method="POST" modelAttribute="PasswordForgotDto"  action="/reset" class="form-horizontal">
+            
+             
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3 control-lable" for="email">Email</label>
+                    <div class="col-md-7">
+                        <form:input type="text" path="email" id="email" class="form-control input-sm"/>
+                        <div class="has-error">
+                            <form:errors path="email" class="help-inline"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-actions floatRight">
+            
+            <input type="submit" value="reset" class="btn btn-primary btn-sm"/>
+            </div>
+            </div>
+            </form:form>
+
+    </div>
+    </div>
+    </div> 
