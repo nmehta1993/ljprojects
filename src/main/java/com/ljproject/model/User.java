@@ -15,18 +15,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.validator.constraints.Email;
+
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Transient;
 
+import com.ljproject.util.ConstantUtils;
+import com.ljproject.validator.Validate;
 import com.ljproject.web.services.model.audit.DateAudit;
+
 
 
 
@@ -42,18 +45,15 @@ public class User extends DateAudit implements Serializable{
 	@Column(name = "user_id")
 	private long id;
 	
-	@Column(name = "email")
-	@Email(message = "*Please provide a valid Email")
-	@NotEmpty(message = "*Please provide an email")
+	@NotNull
+	@Validate(min=10, max=100, regexp=ConstantUtils.EMAIL_PATTERN, message="Please enter between {min}-{max} characters and valid input")
 	private String email;
 	
     @NotBlank
     @Size(max = 15)
-    @Column(name = "username")
     private String username;
     
-    @Column(name = "sex")
-    private String sex;
+   private String sex;
     
     
     
@@ -95,13 +95,15 @@ public class User extends DateAudit implements Serializable{
 		this.username = username;
 	}
 
-	@Column(name = "password")
+	
 	@Length(min = 8, message = "*Your password must have at least 8 characters")
 	@NotEmpty(message = "*Please provide your password")
 	@Transient
 	private String password;
-	@Column(name = "firstName")
+	@NotNull
+	@Validate(min=5, max=30, regexp=ConstantUtils.CHAR_PATTERN, message="Please enter between {min}-{max} characters and no digits")
 	private String firstName;
+
 	public int getApproved() {
 		return approved;
 	}
@@ -110,9 +112,9 @@ public class User extends DateAudit implements Serializable{
 		this.approved = approved;
 	}
 
-	@Column(name = "lastName",nullable = false)
+	@NotNull
 	private String lastName;
-	@Column(name = "active")
+	
 	private int active;
 	@ManyToMany(cascade = CascadeType.REFRESH)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -120,10 +122,10 @@ public class User extends DateAudit implements Serializable{
 	
 	
 	
-	@Column(name = "otp")
+	
 	private String otp;
 	
-	@Column(name = "verify") 
+	
 	@ColumnDefault("0")
 	private String verify;
 
@@ -131,7 +133,7 @@ public class User extends DateAudit implements Serializable{
 	
 	
 	
-	@Column(name = "approved")
+	
 	@ColumnDefault("0")
 	private int approved;
 	

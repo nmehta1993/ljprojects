@@ -11,52 +11,35 @@
 			</c:choose> User
 		</strong>
 	</div>
-	<form:form method="post" class="form-horizontal" action="${path}/user/add" commandName="userForm" id="submitUserForm">
+	<form:form method="post" class="form-horizontal" action="/admin/add" commandName="userForm" id="submitUserForm">
 		<form:hidden path="id"/>
 		<div class="panel-body">
 			<div class="form-group">
-				<label class="col-md-2 control-label">Full Name : </label>
+				<label class="col-md-2 control-label">First Name : </label>
 				<div class="col-md-4">
-					<form:input class="form-control" path="fullName" placeholder="Enter Full Name" required="true"/>
-				</div>
-				
-				<label class="col-md-2 control-label">User Id : </label>
-				<div class="col-md-4">
-					<form:input class="form-control" path="userId" placeholder="Enter User Id" required="true"/>
+					<form:input class="form-control" path="firstName" placeholder="Enter First Name" required="true"/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-md-2 control-label">User Name : </label>
+				<label class="col-md-2 control-label">Last Name : </label>
 				<div class="col-md-4">
-					<form:input class="form-control" path="userName" placeholder="Enter User Name" required="true"/>
+					<form:input class="form-control" path="lastName" placeholder="Enter Last Name" required="true"/>
 				</div>
-				
-				<label class="col-md-2 control-label">Password : </label>
+				</div>
+				<div class="form-group">
+				<label class="col-md-2 control-label">Username : </label>
 				<div class="col-md-4">
-					<form:password class="form-control" path="password" placeholder="Enter Password" required="true"/>
+					<form:input class="form-control" path="username" placeholder="Enter User Name" required="true"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-md-2 control-label">Email : </label>
 				<div class="col-md-4">
-					<form:input class="form-control" path="email" placeholder="Enter Email Address" required="true"/>
+					<form:input class="form-control" path="email" placeholder="Enter Email" required="true"/>
 				</div>
-				
-				<label class="col-md-2 control-label">Mobile : </label>
-				<div class="col-md-4">
-					<form:input class="form-control" path="mobile" placeholder="Enter Mobile Number" required="true"/>
-				</div>
+							
 			</div>
-			<div class="form-group">
-				<label class="col-md-2 control-label">Role :</label>
-				<div class="col-md-4">
-					<form:select class="form-control" path="roleId">
-						<c:forEach items="${roles}" var="role">
-							<form:option value="${role.id}">${role.name}</form:option>
-						</c:forEach>
-					</form:select>
-				</div>
-			</div>
+			
 		</div>
 		<div class="panel-footer">
 			<form:button value="Save" class="btn btn-xs btn-default">

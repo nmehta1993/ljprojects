@@ -6,6 +6,7 @@ package com.ljproject.controller;
 
 import java.util.List;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ljproject.model.City;
 
 import com.ljproject.repository.CityRepository;
-import com.ljproject.repository.UserProfileRepository;
 import com.ljproject.service.CityService;
 
 /**
@@ -34,9 +34,7 @@ public class CityController {
 	 @Autowired
 	 CityRepository cityRepository;
 	 
-	 @Autowired
-	 UserProfileRepository userProfileRepository;
-	 
+	
 	 @Autowired
 	 CityService cityService;
 	 

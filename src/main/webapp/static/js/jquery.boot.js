@@ -10,10 +10,13 @@ $(function() {
 });
 
 function addForm(type) {
-	alert(type);
-	modifyData("/form");
-	alert("tets");
-
+	$.ajax({
+		type : "GET",
+		url : "/form",
+		success : function(data) {
+			$(".inner-jsp").html(data);
+		}
+	});
 }
 
 function editForm(type, id) {
@@ -21,7 +24,18 @@ function editForm(type, id) {
 }
 
 function fetchList(type) {
+	alert("1");
 	modifyData(type+"/list");
+}
+
+function modifyData(suffix) {
+	$.ajax({
+		type : "GET",
+		url : type+"/form",
+		success : function(data) {
+			$(".inner-jsp").html(data);
+		}
+	});
 }
 
 function modifyData(suffix) {
@@ -33,7 +47,6 @@ function modifyData(suffix) {
 		}
 	});
 }
-
 function deleteData(type, id) {
 	toastr.warning("<div>Are you sure you want to delete this?</div>" +
 			"<div class='btn-group pull-right'>" +

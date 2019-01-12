@@ -100,12 +100,12 @@ public class FrontController {
 		return "/user/list";
 	}
 	
-	@GetMapping("/user/form")
+	@GetMapping("/form")
 	public String userForm(Model model) {
 		model.addAttribute("isNew", true);
 		model.addAttribute("userForm", new User());
 		
-		return "user/form";
+		return "/user/form";
 	}
 
 	

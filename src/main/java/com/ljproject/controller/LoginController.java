@@ -36,6 +36,7 @@ import com.ljproject.util.OtpService;
 import com.ljproject.util.TokenService;
 
 
+
 @Controller
 public class LoginController {
 	
@@ -248,5 +249,9 @@ public class LoginController {
 		userProfileService.saveUserProfile(userProfile);
 		return "dashboard";
 	}
+	
+	
+
+	
 
 }
