@@ -6,6 +6,9 @@ package com.ljproject.configuration;
 
 
 
+import javax.sql.DataSource;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,11 +42,13 @@ import com.ljproject.serviceImpl.CustomUserDetailsService;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 
-	 @Autowired
-	 CustomUserDetailsService customUserDetailsService;
+	@Autowired
+	private CustomUserDetailsService customUserDetailsService;
 
-	 @Autowired
+	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	 
+	
 	 
 	
 
@@ -127,7 +132,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //				.failureHandler(customAuthFailureHandler)
 				.usernameParameter("email")
 				.passwordParameter("password")
-				.and()
+				.and().rememberMe().rememberMeParameter("remember-me").tokenValiditySeconds(86400)
+		        .and().csrf()
+		        .and()
 				.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 				.deleteCookies("remember-me").permitAll().and()
 				.rememberMe().tokenValiditySeconds(180).and()
@@ -146,5 +153,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	       .ignoring()
 	       .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
 	}
+	
+	
 
 }

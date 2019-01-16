@@ -39,6 +39,16 @@
 				</div>
 							
 			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label">Role :</label>
+				<div class="col-md-4">
+					<form:select class="form-control" path="role">
+						<c:forEach items="${roles}" var="role">
+							<form:option value="${role.id}">${role.name}</form:option>
+						</c:forEach>
+					</form:select>
+				</div>
+			</div>
 			
 		</div>
 		<div class="panel-footer">

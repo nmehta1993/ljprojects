@@ -32,6 +32,8 @@ public class FrontController {
 
 	@Autowired
 	private UserService userService;
+	
+	
 
 	@RequestMapping(value = "/table", method = RequestMethod.GET)
 	public String tablePage(Model model) {
@@ -104,8 +106,8 @@ public class FrontController {
 	public String userForm(Model model) {
 		model.addAttribute("isNew", true);
 		model.addAttribute("userForm", new User());
-		
-		return "/user/form";
+		model.addAttribute("roles", userService.roleList());
+	return "/user/form";
 	}
 
 	

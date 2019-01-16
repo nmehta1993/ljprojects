@@ -2,11 +2,14 @@ package com.ljproject.controller;
 
 import java.util.UUID;
 
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,9 +19,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -31,9 +37,12 @@ import com.ljproject.model.UserProfile;
 import com.ljproject.repository.PasswordResetTokenRepository;
 import com.ljproject.service.UserProfileService;
 import com.ljproject.service.UserService;
+import com.ljproject.serviceImpl.CustomUserDetailsService;
+import com.ljproject.util.ErrorUtils;
 import com.ljproject.util.MailService;
 import com.ljproject.util.OtpService;
 import com.ljproject.util.TokenService;
+
 
 
 
@@ -54,6 +63,9 @@ public class LoginController {
 	
 	@Autowired
 	private UserProfileService userProfileService;
+	
+	@Autowired
+	private CustomUserDetailsService customUserDetailsService;
 
 	
 	@Autowired
@@ -250,6 +262,15 @@ public class LoginController {
 		return "dashboard";
 	}
 	
+	@PostMapping(value="/admin/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public @ResponseBody String userAdd(@Valid User user, BindingResult result) {
+		if(result.hasErrors()) {
+			return ErrorUtils.customErrors(result.getAllErrors());
+		} else {
+			return userService.addUser(user);
+		}
+	}
 	
 
 	

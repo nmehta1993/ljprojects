@@ -2,6 +2,7 @@ package com.ljproject.model;
 
 import java.io.Serializable;
 
+
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -29,6 +31,7 @@ import org.springframework.data.annotation.Transient;
 import com.ljproject.util.ConstantUtils;
 import com.ljproject.validator.Validate;
 import com.ljproject.web.services.model.audit.DateAudit;
+
 
 
 
@@ -54,13 +57,24 @@ public class User extends DateAudit implements Serializable{
     private String username;
     
    private String sex;
+   
+   
+    @ManyToOne
+	@JoinColumn(name = "role_id")
+	private Role role;
     
     
     
-	
 
+    public Role getRole() {
+		return role;
+	}
 
-	public String getSex() {
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+		public String getSex() {
 		return sex;
 	}
 
@@ -217,9 +231,6 @@ public class User extends DateAudit implements Serializable{
 		this.roles = roles;
 	}
 
-	
 
-	
-	
 
 }
