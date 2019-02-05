@@ -87,13 +87,13 @@ body {
 								</div>
 							</div>
 							<div class="form-group">
-
-								<label class="radio-inline"> <input type="radio"
-									class="form-control" name="sex" value="M" checked="checked">Male
-								</label> <label class="radio-inline"> <input type="radio"
-									class="form-control" name="sex" value="F" checked="checked">Female
-								</label>
-
+								<div class="col-md-12">
+									<label class="radio-inline"> <input type="radio"
+										name="sex" value="M" checked="checked">Male
+									</label> <label class="radio-inline"> <input type="radio"
+										name="sex" value="F" checked="checked">Female
+									</label>
+								</div>
 							</div>
 
 
