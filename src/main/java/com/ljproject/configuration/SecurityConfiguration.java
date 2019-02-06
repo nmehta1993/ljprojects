@@ -6,7 +6,6 @@ package com.ljproject.configuration;
 
 
 
-import javax.sql.DataSource;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,7 +112,31 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
           //      .authenticated();
 
 		
+		http.
+		authorizeRequests()
+			.antMatchers("/").permitAll()
+			.antMatchers("/webjars/**").permitAll()
+			.antMatchers("/login").permitAll()
+			.antMatchers("/test").permitAll()
+			.antMatchers("/registration").permitAll()
+			.antMatchers("/forgotPassword").permitAll()
+			.antMatchers("/reset/**").permitAll()
+			.antMatchers("/approve/**").permitAll()
+			.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+			.antMatchers("/user/**").access("hasRole('ROLE_USER')").anyRequest()
+			.authenticated().and().csrf().disable().formLogin()
+			.loginPage("/login").failureUrl("/login?error=true")
+			.successHandler(customSuccesshandler)
+//			.failureHandler(customAuthFailureHandler)
+			.usernameParameter("email")
+			.passwordParameter("password")
+			.and().logout()
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+			.logoutSuccessUrl("/").and().exceptionHandling()
+			.accessDeniedPage("/access-denied");
 		
+		
+		/*
 		http.csrf().disable()
 				.authorizeRequests()
 			    .antMatchers("/webjars/**").permitAll()
@@ -122,6 +145,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/test").permitAll()
 				.antMatchers("/registration").permitAll()
 				.antMatchers("/forgotPassword").permitAll()
+				.antMatchers("/reset").permitAll()
 				.antMatchers("/reset/**").permitAll()
 				.antMatchers("/approve/**").permitAll()
 				.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
@@ -132,14 +156,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //				.failureHandler(customAuthFailureHandler)
 				.usernameParameter("email")
 				.passwordParameter("password")
-				.and().rememberMe().rememberMeParameter("remember-me").tokenValiditySeconds(86400)
+				.and().rememberMe().rememberMeParameter("remember-me").tokenValiditySeconds(86400000)
 		        .and().csrf()
 		        .and()
 				.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 				.deleteCookies("remember-me").permitAll().and()
-				.rememberMe().tokenValiditySeconds(180).and()
+				.rememberMe().tokenValiditySeconds(1800).and()
 				.logout().logoutSuccessUrl("/").and().exceptionHandling()
-				.accessDeniedPage("/access-denied");
+				.accessDeniedPage("/access-denied");*/
 		
 		 // Add our custom JWT security filter
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
