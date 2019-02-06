@@ -11,9 +11,8 @@
 <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 <style type="text/css">
 body {
-	background:
-		url("http://quatangquangcao.net/wp-content/uploads/2016/02/AF-Client-Login-background-1024x682.png")
-		no-repeat center center fixed;
+	background: url("/static/assets/img/bg.png") no-repeat center center
+		fixed;
 	background-size: cover;
 	display: flex;
 	align-items: center;
@@ -38,8 +37,7 @@ body {
 									<div class="input-group input-group-md">
 										<span class="input-group-addon"> <span
 											class="glyphicon glyphicon-user"></span>
-										</span> <input type="text" class="form-control" name="firstName"
-											placeholder="Enter First Name" />
+										</span> <input type="text" class="form-control" name="firstName" placeholder="Enter First Name" />
 									</div>
 								</div>
 							</div>
@@ -48,8 +46,7 @@ body {
 									<div class="input-group input-group-md">
 										<span class="input-group-addon"> <span
 											class="glyphicon glyphicon-user"></span>
-										</span> <input type="text" class="form-control" name="lastName"
-											placeholder="Enter Last Name" />
+										</span> <input type="text" class="form-control" name="lastName" placeholder="Enter Last Name" />
 									</div>
 								</div>
 							</div>
@@ -58,8 +55,7 @@ body {
 									<div class="input-group input-group-md">
 										<span class="input-group-addon"> <span
 											class="glyphicon glyphicon-user"></span>
-										</span> <input type="text" class="form-control" name="username"
-											placeholder="Enter User Name" />
+										</span> <input type="text" class="form-control" name="username" placeholder="Enter User Name" />
 									</div>
 								</div>
 							</div>
@@ -69,8 +65,7 @@ body {
 									<div class="input-group input-group-md">
 										<span class="input-group-addon"> <span
 											class="glyphicon glyphicon-lock"></span>
-										</span> <input type="password" class="form-control" name="password"
-											placeholder="Enter Password" />
+										</span> <input type="password" class="form-control" name="password" placeholder="Enter Password" />
 									</div>
 								</div>
 							</div>
@@ -81,25 +76,19 @@ body {
 									<div class="input-group input-group-md">
 										<span class="input-group-addon"> <span
 											class="glyphicon glyphicon-user"></span>
-										</span> <input type="text" class="form-control" name="email"
-											placeholder="Enter Email" />
+										</span> <input type="text" class="form-control" name="email" 		placeholder="Enter Email" />
 									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-md-12">
-									<label class="radio-inline"> <input type="radio"
-										name="sex" value="M" checked="checked">Male
-									</label> <label class="radio-inline"> <input type="radio"
-										name="sex" value="F" checked="checked">Female
+									<label class="radio-inline"> <input type="radio" name="sex" value="M" checked="checked">Male
+									</label> <label class="radio-inline"> <input type="radio" name="sex" value="F" checked="checked">Female
 									</label>
 								</div>
 							</div>
 
-
-
-							<input type="hidden" name="${_csrf.parameterName}"
-								value="${_csrf.token}" />
+						<input type="hidden" name="${_csrf.parameterName}" 	value="${_csrf.token}" />
 							<div class="form-group">
 								<div class="col-md-12">
 									<button type="submit" value="Register"
@@ -114,6 +103,5 @@ body {
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>

@@ -11,7 +11,7 @@
 		<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 		<style type="text/css">
 			body {
-				background: url("http://quatangquangcao.net/wp-content/uploads/2016/02/AF-Client-Login-background-1024x682.png") no-repeat center center fixed;
+				background: url("/static/assets/img/bg.png") no-repeat center center fixed;
 				background-size: cover;
 				display: flex;
 				align-items: center;

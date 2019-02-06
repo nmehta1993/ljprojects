@@ -20,7 +20,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,7 +36,6 @@ import com.ljproject.model.UserProfile;
 import com.ljproject.repository.PasswordResetTokenRepository;
 import com.ljproject.service.UserProfileService;
 import com.ljproject.service.UserService;
-import com.ljproject.serviceImpl.CustomUserDetailsService;
 import com.ljproject.util.ErrorUtils;
 import com.ljproject.util.MailService;
 import com.ljproject.util.OtpService;
@@ -64,8 +62,7 @@ public class LoginController {
 	@Autowired
 	private UserProfileService userProfileService;
 	
-	@Autowired
-	private CustomUserDetailsService customUserDetailsService;
+	
 
 	
 	@Autowired
