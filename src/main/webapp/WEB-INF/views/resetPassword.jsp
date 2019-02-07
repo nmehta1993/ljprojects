@@ -41,7 +41,7 @@ body {
 							<div class="form-group">
 								<div class="col-md-12">
 									<div class="input-group input-group-md">
-										<span class="input-group-addon"> <span  class="glyphicon glyphicon-envelope"></span>
+										<span class="input-group-addon"> <span  class="glyphicon glyphicon-lock"></span>
 										</span>
 										<form:input type="text" path="password" id="password" class="form-control" placeholder="Enter password" />
 										<div class="has-error">
@@ -56,7 +56,7 @@ body {
 							<div class="form-group">
 								<div class="col-md-12">
 									<div class="input-group input-group-md">
-										<span class="input-group-addon"> <span class="glyphicon glyphicon-envelope"></span>
+										<span class="input-group-addon"> <span class="glyphicon glyphicon-lock"></span>
 										</span>
 										<form:input type="text" path="confirmpasword" id="confirmpasword" class="form-control" 	placeholder="Enter confirm password" />
 										<div class="has-error">
