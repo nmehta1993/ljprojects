@@ -8,7 +8,7 @@ $(function() {
 		fetchList("address");
 	});
 });
-
+//add form ajax call for redirecting user form
 function addForm(type) {
 	$.ajax({
 		type : "GET",
@@ -18,9 +18,17 @@ function addForm(type) {
 		}
 	});
 }
-
+//edit form ajax call for redirecting user form
 function editForm(type, id) {
-	modifyData(type+"/edit/"+id);
+	alert("hi");
+	$.ajax({
+		type : "GET",
+		url : "/edituser/"+id,
+		success : function(data) {
+			$(".inner-jsp").html(data);
+		}
+	});
+	
 }
 
 function fetchList(type) {
@@ -59,7 +67,7 @@ function deleteData(type, id) {
 			$("#confirmationYes").click(function() {
 				$.ajax({
 					type : "GET",
-					url : "/mightyjava/"+type+"/delete/"+id,
+					url : type+"/delete/"+id,
 					success : function(data) {
 						fetchList(type);
 						toastr.success(data.message, "Delete Confirmation", {

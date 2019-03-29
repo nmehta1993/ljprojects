@@ -1,14 +1,17 @@
 package com.ljproject.controller;
 
+import java.beans.PropertyEditorSupport;
 import java.util.UUID;
 
-
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +20,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,15 +36,18 @@ import com.ljproject.dto.ChangePasswordDto;
 import com.ljproject.dto.PasswordForgotDto;
 import com.ljproject.exception.UserNotFoundException;
 import com.ljproject.model.PasswordResetToken;
+import com.ljproject.model.Role;
 import com.ljproject.model.User;
 import com.ljproject.model.UserProfile;
 import com.ljproject.repository.PasswordResetTokenRepository;
+import com.ljproject.service.RoleService;
 import com.ljproject.service.UserProfileService;
 import com.ljproject.service.UserService;
 import com.ljproject.util.ErrorUtils;
 import com.ljproject.util.MailService;
 import com.ljproject.util.OtpService;
 import com.ljproject.util.TokenService;
+
 
 
 
@@ -57,6 +65,9 @@ public class LoginController {
 
 	@Autowired
 	private TokenService tokenService;
+	
+	@Autowired
+	private RoleService roleService;
 	
 	
 	@Autowired
@@ -93,9 +104,10 @@ public class LoginController {
 	}
 	
 	 @RequestMapping(value = { "/admin/delete/{id}" }, method = RequestMethod.GET)
+	 @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 	    public String deleteUser(@PathVariable long id) {
 	        userService.deleteUserById(id);
-	        return "redirect:/admin";
+	        return "redirect:/list";
 	    }
 	 
 	
@@ -249,26 +261,13 @@ public class LoginController {
 		}
 		return userName;
 	}
-	
-	
-	
+		
 	@RequestMapping(value = { "/adduserprofile" }, method = RequestMethod.POST)
 	public String addUserprofile(@ModelAttribute("userprofile") UserProfile userProfile,Model model) {
 		model.addAttribute("userprofile", userProfile);
 		userProfileService.saveUserProfile(userProfile);
 		return "dashboard";
 	}
-	
-	@PostMapping(value="/admin/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public @ResponseBody String userAdd(@Valid User user, BindingResult result) {
-		if(result.hasErrors()) {
-			return ErrorUtils.customErrors(result.getAllErrors());
-		} else {
-			return userService.addUser(user);
-		}
-	}
-	
 
 	
 

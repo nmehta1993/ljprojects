@@ -11,7 +11,7 @@
 			</c:choose> User
 		</strong>
 	</div>
-	<form:form method="post" class="form-horizontal" action="/admin/add" commandName="userForm" id="submitUserForm">
+	<form:form method="post" class="form-horizontal" action="/admin/addUser" commandName="userForm" id="submitUserForm">
 		<form:hidden path="id"/>
 		<div class="panel-body">
 			<div class="form-group">
@@ -39,12 +39,20 @@
 				</div>
 							
 			</div>
+			
+			<div class="form-group">
+				<label class="col-md-2 control-label">Password : </label>
+				<div class="col-md-4">
+					<form:input class="form-control" path="password" placeholder="Enter Password" required="true"/>
+				</div>
+							
+			</div>
 			<div class="form-group">
 				<label class="col-md-2 control-label">Role :</label>
 				<div class="col-md-4">
 					<form:select class="form-control" path="role">
 						<c:forEach items="${roles}" var="role">
-							<form:option value="${role.id}">${role.name}</form:option>
+							<form:option value="${role.id}">${role.role}</form:option>
 						</c:forEach>
 					</form:select>
 				</div>

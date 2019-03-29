@@ -3,6 +3,8 @@ package com.ljproject.model;
 import java.io.Serializable;
 
 
+
+
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -28,9 +30,11 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ljproject.util.ConstantUtils;
 import com.ljproject.validator.Validate;
 import com.ljproject.web.services.model.audit.DateAudit;
+
 
 
 
@@ -59,10 +63,12 @@ public class User extends DateAudit implements Serializable{
    private String sex;
    
    
+   
     @ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "role_id")
 	private Role role;
-    
+  
     
     
 

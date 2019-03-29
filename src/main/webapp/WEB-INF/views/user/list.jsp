@@ -29,9 +29,14 @@
 				 <c:forEach items="${users}" var="user">
    								<tr>
    								 <td align="center">
-                              <a class="btn btn-default" ><em class="fa fa-pencil"></em></a>
+   								 <a class="btn btn-default" href="javascript:void(0);" onclick="editForm('admin', '${user.id}')"><em class="fa fa-pencil"></em></a>
+   								 
+                          <%--   //  <a class="btn btn-default" href="<c:url value='/edituser/${user.id}' />" ><em class="fa fa-pencil"></em></a> --%>
                            
-                              <a  class="btn btn-default" href="<c:url value='/admin/delete/${user.id}' />" class="btn btn-danger custom-width"><em class="fa fa-trash"></em></a> 	
+                            <%--   <a  class="btn btn-default" href="<c:url value='/admin/delete/${user.id}' />" class="btn btn-danger custom-width"><em class="fa fa-trash"></em></a> --%> 	
+                           
+                           
+                            <a class="btn btn-default" href="javascript:void(0);" onclick="deleteData('admin', '${user.id}')"><em class="fa fa-trash"></em></a>
                             </td>
    								 <td><c:out value="${user.firstName}"/></td>
    								 <td><c:out value="${user.lastName}"/></td>
