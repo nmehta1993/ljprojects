@@ -6,6 +6,7 @@ package com.ljproject.controller;
 import java.beans.PropertyEditorSupport;
 
 
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -33,6 +34,8 @@ import com.ljproject.service.UserService;
 
 
 
+
+
 /**
  * @author Nitesh
  *
@@ -48,13 +51,29 @@ public class UserController {
 	@Autowired
 	private RoleService roleService;
 	
-	@RequestMapping(value="admin/addUser", method = RequestMethod.POST)
+	
+	@RequestMapping(value="admin/addUser", method=RequestMethod.POST)
+	public ResponseEntity<HttpStatus> addUser(HttpSession session, @Valid @ModelAttribute("newUser") User user, BindingResult result) {
+		if(result.hasErrors()) {
+			StringBuilder sb = new StringBuilder();
+			result.getFieldErrors().forEach(error -> {
+				sb.append("* ");
+				sb.append(error.getDefaultMessage());
+				sb.append("</br>");
+			});
+			session.setAttribute("errorMsg", sb.toString());
+		} else session.setAttribute("status",userService.saveUser(user));
+		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+		}
+	
+	
+	/*@RequestMapping(value="admin/addUser", method = RequestMethod.POST)
 	public  String addUser(HttpSession session, @Valid @ModelAttribute("newUser") User user, BindingResult result){
 		
 		userService.addUser(user);
 				
 		return "/dashboard";
-	}
+	}*/
 	
 	@GetMapping("/edituser/{id}")
 	public String userOne(@PathVariable Long id, Model model) {

@@ -82,62 +82,13 @@ public class LoginController {
 	@Autowired
 	PasswordResetTokenRepository passwordResetTokenRepository;
 
-	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-	public ModelAndView login() {
-		logger.info("validation errors");
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("login");
-		return modelAndView;
-	}
-
-	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
-	public String homePage() {
-		logger.info("validation errors");
-
-		return "home";
-	}
-
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String adminPage(ModelMap model) {
-		model.addAttribute("user", getPrincipal());
-			return "dashboard";
-	}
-	
 	 @RequestMapping(value = { "/admin/delete/{id}" }, method = RequestMethod.GET)
 	 @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 	    public String deleteUser(@PathVariable long id) {
 	        userService.deleteUserById(id);
 	        return "redirect:/list";
 	    }
-	 
 	
-
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
-	public String userPage(ModelMap model) {
-		model.addAttribute("user", getPrincipal());
-
-		return "welcome";
-	}
-	
-
-	@RequestMapping(value = "/db", method = RequestMethod.GET)
-	public String dbaPage(ModelMap model) {
-		model.addAttribute("user", getPrincipal());
-		return "dba";
-	}
-
-	@RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
-	public String accessDeniedPage(ModelMap model) {
-		model.addAttribute("user", getPrincipal());
-		return "accessDenied";
-	}
-
-	@RequestMapping(value = "/forgotPassword", method = RequestMethod.GET)
-	public String forgotPassword(ModelMap model) {
-		model.addAttribute("PasswordForgotDto", new PasswordForgotDto());
-		return "forgotPassword";
-	}
-
 	@RequestMapping(value = "/reset/changePassword", method = RequestMethod.GET)
 	public String changePassword(@RequestParam(required = false) String token, @RequestParam("id") long id,
 			Model model) {
@@ -206,14 +157,7 @@ public class LoginController {
 		return "forgotPassword";
 	}
 	
-	@RequestMapping(value = "/registration", method = RequestMethod.GET)
-	public ModelAndView registration() {
-		ModelAndView modelAndView = new ModelAndView();
-		User user = new User();
-		modelAndView.addObject("user", user);
-		modelAndView.setViewName("registration");
-		return modelAndView;
-	}
+	
 
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {

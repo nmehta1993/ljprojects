@@ -10,7 +10,5 @@ public interface UserDetailsDao {
 
 	void deleteUserById(Long id);
 
-	
-
 	void deleteById(int id);
 }

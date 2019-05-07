@@ -61,8 +61,7 @@ public class CityController {
 	 @RequestMapping(value = { "/admin/deletecity/{id}" }, method = RequestMethod.GET)
 	    public String deleteUser(@PathVariable long id,Model model) {
 	       cityService.deleteCityById(id);
-	       System.out.println("thsis is test");
-	       List<City> listcity=cityService.listCity();
+	        List<City> listcity=cityService.listCity();
 			model.addAttribute("listcity", listcity);
 	        return "redirect:/city";
 	    }
