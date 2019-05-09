@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ljproject.model.DemoUser;
-import com.ljproject.model.User;
 import com.ljproject.service.DemoUserService;
 import com.ljproject.service.RoleService;
 import com.ljproject.service.UserProfileService;

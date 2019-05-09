@@ -1,42 +1,32 @@
 package com.ljproject.controller;
 
 import java.beans.PropertyEditorSupport;
-
 import java.util.UUID;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 
 import com.ljproject.dto.ChangePasswordDto;
 import com.ljproject.dto.PasswordForgotDto;
 import com.ljproject.exception.UserNotFoundException;
-import com.ljproject.model.DemoUser;
 import com.ljproject.model.PasswordResetToken;
 import com.ljproject.model.Role;
 import com.ljproject.model.User;
@@ -46,7 +36,6 @@ import com.ljproject.service.DemoUserService;
 import com.ljproject.service.RoleService;
 import com.ljproject.service.UserProfileService;
 import com.ljproject.service.UserService;
-import com.ljproject.util.ErrorUtils;
 import com.ljproject.util.MailService;
 import com.ljproject.util.OtpService;
 import com.ljproject.util.TokenService;

@@ -5,8 +5,6 @@ package com.ljproject.controller;
 
 import java.beans.PropertyEditorSupport;
 
-
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -25,7 +23,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ljproject.model.Role;
 import com.ljproject.model.User;
