@@ -5,7 +5,7 @@ $(function() {
 	});
 	
 	$("#addressList").click(function() {
-		fetchList("address");
+		fetchAddressList("address");
 	});
 });
 //add form ajax call for redirecting user form
@@ -36,6 +36,11 @@ function fetchList(type) {
 	modifyData(type+"/list");
 }
 
+function fetchAddressList(type) {
+	alert("1");
+	modifyAddressData(type);
+}
+
 function modifyData(suffix) {
 	$.ajax({
 		type : "GET",
@@ -45,7 +50,15 @@ function modifyData(suffix) {
 		}
 	});
 }
-
+function modifyAddressData(type) {
+	$.ajax({
+		type : "GET",
+		url : type+"/list",
+		success : function(data) {
+			$(".inner-jsp").html(data);
+		}
+	});
+}
 function modifyData(suffix) {
 	$.ajax({
 		type : "GET",

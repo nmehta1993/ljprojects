@@ -35,10 +35,9 @@ body {
 									<p>User has been registered successfully.</p>
 								</div>
 					</c:if>
-					
 					<div class="panel-body">
-						<c:url var="regUrl" value="/registration" />
-						<form:form method="POST" modelAttribute="user" action="${regUrl}" class="form-signin form-horizontal">
+						<c:url var="regUrl" value="/reg" />
+						<form:form method="POST" modelAttribute="demouser" action="${regUrl}" class="form-signin form-horizontal">
 						<form:input type="hidden" path="id" id="id"/>
 						
 							<div class="form-group">
@@ -113,8 +112,18 @@ body {
 									<form:errors path="sex" class="control-label" />
 								</div>
 							</div>
+							<div class="form-group">
+								<label class="col-md-2 control-label">Role:</label>
+								<div class="col-md-10"">
+									<form:select class="form-control" path="role">
+										<c:forEach items="${roles}" var="role">
+											<form:option value="${role.id}">${role.role}</form:option>
+										</c:forEach>
+									</form:select>
+								</div>
+							</div>
 
-						<input type="hidden" name="${_csrf.parameterName}" 	value="${_csrf.token}" />
+							<input type="hidden" name="${_csrf.parameterName}" 	value="${_csrf.token}" />
 							<div class="form-group">
 								<div class="col-md-12">
 									<button type="submit" value="Register"

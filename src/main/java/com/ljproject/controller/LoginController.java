@@ -1,6 +1,7 @@
 package com.ljproject.controller;
 
 import java.beans.PropertyEditorSupport;
+
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -35,11 +36,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ljproject.dto.ChangePasswordDto;
 import com.ljproject.dto.PasswordForgotDto;
 import com.ljproject.exception.UserNotFoundException;
+import com.ljproject.model.DemoUser;
 import com.ljproject.model.PasswordResetToken;
 import com.ljproject.model.Role;
 import com.ljproject.model.User;
 import com.ljproject.model.UserProfile;
 import com.ljproject.repository.PasswordResetTokenRepository;
+import com.ljproject.service.DemoUserService;
 import com.ljproject.service.RoleService;
 import com.ljproject.service.UserProfileService;
 import com.ljproject.service.UserService;
@@ -59,6 +62,9 @@ public class LoginController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private DemoUserService demoUserService;
 
 	@Autowired
 	private MailService mailService;
@@ -159,6 +165,9 @@ public class LoginController {
 	
 	
 
+	
+	
+
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
@@ -212,7 +221,17 @@ public class LoginController {
 		userProfileService.saveUserProfile(userProfile);
 		return "dashboard";
 	}
-
+	@InitBinder(value="newUser")
+	private void InitBinder(WebDataBinder binder){
+		binder.registerCustomEditor(Role.class, new RoleValueBinder());
+	}
+	
+	private class RoleValueBinder extends PropertyEditorSupport {
+		@Override
+		public void setAsText(String text) throws IllegalArgumentException {
+			setValue(roleService.findById(Integer.parseInt(text)));
+		}
+	}
 	
 
 }

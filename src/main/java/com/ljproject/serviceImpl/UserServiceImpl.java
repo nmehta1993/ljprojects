@@ -1,17 +1,12 @@
 package com.ljproject.serviceImpl;
 
-import java.util.Arrays;
 
-
-
-import java.util.HashSet;
 import java.util.List;
 
 import javax.mail.internet.MimeMessage;
 import javax.transaction.Transactional;
 
-import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,24 +117,5 @@ public class UserServiceImpl implements UserService {
 		return roleRepository.findAll();
 	}
 	
-	@Override
-	public String addUser(User user) {
-		String message = null;
-		JSONObject jsonObject = new JSONObject();
-		try {
-			if((Long)user.getId() == null) {
-				message = "Added";
-			} else {
-				message = "Updated";
-			}
-			user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-			user.setRole(roleRepository.findOne(user.getRole().getId()));
-			jsonObject.put("status", "success");
-			jsonObject.put("title", message+" Confirmation");
-			jsonObject.put("message", userRepository.save(user).getFirstName()+" "+message+" successfully.");
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		return jsonObject.toString();
-	}
+	
 }

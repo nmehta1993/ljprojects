@@ -3,6 +3,7 @@
  */
 package com.ljproject.controller;
 
+import java.beans.PropertyEditorSupport;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -14,16 +15,22 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 import com.ljproject.dto.PasswordForgotDto;
+import com.ljproject.model.DemoUser;
+import com.ljproject.model.Role;
 import com.ljproject.model.Subscriber;
 import com.ljproject.model.User;
 import com.ljproject.model.UserProfile;
 import com.ljproject.repository.PasswordResetTokenRepository;
+import com.ljproject.service.DemoUserService;
 import com.ljproject.service.RoleService;
 import com.ljproject.service.UserProfileService;
 import com.ljproject.service.UserService;
@@ -42,6 +49,9 @@ public class FrontController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private DemoUserService demoUserService;
 	
 	
 
@@ -72,6 +82,14 @@ public class FrontController {
 		User user = new User();
 		model.addAttribute("user", user);
 		return "registration";
+	}
+	
+	@RequestMapping(value = "/reg", method = RequestMethod.GET)
+	public String demoregistration(ModelMap model) {
+		DemoUser user= new DemoUser();
+		model.addAttribute("demouser", user);
+		model.addAttribute("roles", userService.roleList());
+		return "demoregistration";
 	}
 	
 	@RequestMapping(value = "/forgotPassword", method = RequestMethod.GET)
@@ -212,6 +230,19 @@ public class FrontController {
 		model.addAttribute("userForm", new User());
 		model.addAttribute("roles", userService.roleList());
 	return "/user/form";
+	}
+	
+	
+	@InitBinder(value="newUser")
+	private void InitBinder(WebDataBinder binder){
+		binder.registerCustomEditor(Role.class, new RoleValueBinder());
+	}
+	
+	private class RoleValueBinder extends PropertyEditorSupport {
+		@Override
+		public void setAsText(String text) throws IllegalArgumentException {
+			setValue(roleService.findById(Integer.parseInt(text)));
+		}
 	}
 
 	

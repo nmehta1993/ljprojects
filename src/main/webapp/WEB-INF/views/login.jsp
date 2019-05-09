@@ -37,7 +37,7 @@ body {
 							</c:if>
 							<c:if test="${param.logout != null}">
 								<div class="alert alert-success">
-									<p>You have been logged out successfully.</p>
+									<p>User has been registered successfully</p>
 								</div>
 							</c:if>
 							<div class="form-group">

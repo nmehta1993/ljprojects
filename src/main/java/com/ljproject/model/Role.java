@@ -36,22 +36,36 @@ public class Role implements Serializable {
 	private String role;
 	
 	@OneToMany(targetEntity = User.class, mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<User> users;
+	private Set<User> user;
 	
 	
-	 @Enumerated(EnumType.STRING)
+	@OneToMany(targetEntity = DemoUser.class, mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<DemoUser> demoUser;
+	
+	
+
+	public Set<DemoUser> getDemoUser() {
+		return demoUser;
+	}
+	public void setDemoUser(Set<DemoUser> demoUser) {
+		this.demoUser = demoUser;
+	}
+	public Set<User> getUser() {
+		return user;
+	}
+	public void setUser(Set<User> user) {
+		this.user = user;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	@Enumerated(EnumType.STRING)
 	 @NaturalId
 	 @Column(length = 60)
 	 private RoleName name;
 	 
 	 
 	
-	public Set<User> getUsers() {
-		return users;
-	}
-	public void setUsers(Set<User> users) {
-		this.users = users;
-	}
 	public RoleName getName() {
 		return name;
 	}

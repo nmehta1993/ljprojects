@@ -25,23 +25,23 @@ import com.ljproject.web.services.model.audit.DateAudit;
 @Table(name = "subscriber")
 public class Subscriber extends DateAudit implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private long id;
-	
+
 	@NotNull
-	@Validate(min=10, max=100, regexp=ConstantUtils.EMAIL_PATTERN, message="Please enter between {min}-{max} characters and valid input")
+	@Validate(min = 10, max = 100, regexp = ConstantUtils.EMAIL_PATTERN, message = "Please enter between {min}-{max} characters and valid input")
 	private String email;
-	
-	
+
 	@Column(name = "subscriberName")
-    private String subscriberName;
-	
-	
+	private String subscriberName;
+
 	@Column(name = "phoneNumber")
-    private String phoneNumber;
-	
+	private String phoneNumber;
+
 	public String getSubscriberName() {
 		return subscriberName;
 	}
@@ -49,7 +49,6 @@ public class Subscriber extends DateAudit implements Serializable {
 	public void setSubscriberName(String subscriberName) {
 		this.subscriberName = subscriberName;
 	}
-
 
 	public long getId() {
 		return id;
