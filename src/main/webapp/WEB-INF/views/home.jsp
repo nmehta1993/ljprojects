@@ -6,11 +6,11 @@
 <html lang="en">
 <head>
 <script type="text/javascript" src="<c:url value='/static/js/jquery.save.js' />"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="<c:url value='/static/js/jquery.min.js'/>"></script>
 
 <%-- <script type="text/javascript" src="${path}/js/jquery.save.js"></script> --%>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<link rel="stylesheet" href="<c:url value='/static/css/toastr.min.css'/>">
+<script type="text/javascript" src="<c:url value='/static/js/toastr.min.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function () {
 

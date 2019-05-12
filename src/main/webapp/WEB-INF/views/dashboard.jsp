@@ -8,13 +8,13 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link rel="shortcut icon" href="https://ignite.apache.org/images/java.png">
 		
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+		<link rel="stylesheet" href="<c:url value='/static/css/toastr.min.css'/>">
 		<link rel="stylesheet" href="${path}/webjars/bootstrap/3.3.5/css/bootstrap.min.css">
 		<link rel="stylesheet" href="${path}/webjars/font-awesome/4.7.0/css/font-awesome.min.css">
 		
 		<script type="text/javascript" src="${path}/webjars/jquery/3.2.0/jquery.min.js"></script>
 		<script type="text/javascript" src="<c:url value='/static/js/jquery.boot.js' />"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+		<script type="text/javascript" src="<c:url value='/static/js/toastr.min.js'/>"></script>
 		<title>Welcome</title>
 		<style>
 			.row {
