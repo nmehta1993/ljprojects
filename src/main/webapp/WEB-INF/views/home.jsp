@@ -5,11 +5,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script type="text/javascript" src="<c:url value='/static/js/jquery.save.js' />"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+<%-- <script type="text/javascript" src="${path}/js/jquery.save.js"></script> --%>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+	$("#submitUserForm").submit(function(e) {
+		e.preventDefault();
+		var frm = $("#submitUserForm");
+		var data = {};
+		$.each(this, function(i, v){
+			var input = $(v);
+			data[input.attr("name")] = input.val();
+			delete data["undefined"];
+		});
+		saveRequestedData(frm, data, "user");
+	});
+	
+	
+	function saveRequestedData(frm, data, type) {
+		alert("test");
+		$.ajax({
+			contentType:"application/json; charset=utf-8",
+			type:frm.attr("method"),
+			url:frm.attr("action"),
+			dataType:'json',
+			data:JSON.stringify(data),
+			success:function(data) {
+				alert("test");
+				debugger;
+				if(data.status == "success") {
+					debugger;
+					toastr.success(data.message, data.title, {
+						closeButton:true
+					});
+					
+				} else {
+					toastr.error(data.message, data.title, {
+						allowHtml:true,
+						closeButton:true
+					});
+				}
+			}
+		});
+	}
+	
+	
+});
+
+
+</script>
   <title>Home</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- /<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
@@ -104,6 +158,32 @@
 </div><br><br>
 
 <footer class="container-fluid text-center">
+
+<form name="employeeForm" id="submitUserForm"   commandName="subscribe"  action="/subscribe" method="post">
+
+        <c:if test="${message != null}">
+									<div class="alert alert-success">
+										<strong>${message}</strong>
+									</div>
+								</c:if>
+         <table cellpadding="0" cellspacing="0" border="1" class="GridOne">
+            <tr>
+               <td>Email</td>
+               <td><input type="text" name="email" id="email" value=""></td>
+            </tr>
+            <tr>
+               <td>Subscriber name</td>
+               <td><input type="text" name="subscriberName" id="subscriberName" value=""></td>
+            </tr>
+            <tr>
+               <td>Phone Number</td>
+               <td><input type="text" name="phoneNumber" id="phoneNumber" value=""></td>
+            </tr>
+            <tr>
+               <td colspan="2" align="center"><input type="submit" value="submit"  ></td>
+            </tr>
+         </table>
+      </form>
   <p>Footer Text</p>
 </footer>
 
