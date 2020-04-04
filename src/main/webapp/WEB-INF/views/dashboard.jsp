@@ -21,7 +21,7 @@
 				margin-top: 50px; margin-left: 0px; margin-right: 0px;
 			}
 			.menu {
-				height: 100%; position: fixed; background-color: #f8f8f8;
+				height: 100%; position: fixed; background-color: #f8f8f8;width:14%;
 			}
 			.menu .navbar-nav li {
 				width: 100%; border-bottom: 1px solid #e7e7e7;
@@ -58,6 +58,12 @@
 		    			<ul class="nav navbar-nav">
 		    				<li><a href="javascript:void(0);" id="userList"><span class="glyphicon glyphicon-user"></span> User List</a></li>
 		    				<li><a href="javascript:void(0);" id="addressList"><i class="fa fa-address-card-o"></i> Address List</a></li>
+		    				<li><a href="javascript:void(0);" id="productList"><i class="fa fa-address-card-o"></i> Product</a></li>
+		    			
+		    			
+		    			</ul>
+		    			<ul >
+		    			
 		    			</ul>
 		    		</div>
 		    	</div>

@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ljproject.model.Role;
+import com.ljproject.model.Subscriber;
 import com.ljproject.model.User;
 import com.ljproject.service.RoleService;
 import com.ljproject.service.UserService;
@@ -48,7 +49,7 @@ public class UserController {
 	@Autowired
 	private RoleService roleService;
 	
-	
+	/*
 	@RequestMapping(value="admin/addUser", method=RequestMethod.POST)
 	public ResponseEntity<HttpStatus> addUser(HttpSession session, @Valid @ModelAttribute("newUser") User user, BindingResult result) {
 		if(result.hasErrors()) {
@@ -61,16 +62,17 @@ public class UserController {
 			session.setAttribute("errorMsg", sb.toString());
 		} else session.setAttribute("status",userService.saveUser(user));
 		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
-		}
+		}*/
 	
 	
-	/*@RequestMapping(value="admin/addUser", method = RequestMethod.POST)
-	public  String addUser(HttpSession session, @Valid @ModelAttribute("newUser") User user, BindingResult result){
-		
-		userService.addUser(user);
+	@RequestMapping(value="admin/addUser", method = RequestMethod.POST)
+	public  String addUser(HttpSession session, @Valid @ModelAttribute("newUser") User user, BindingResult result, Model model){
+		model.addAttribute("user", new User() );
+		model.addAttribute("subscribeModel", new Subscriber());
+		userService.saveUser(user);
 				
 		return "/dashboard";
-	}*/
+	}
 	
 	@GetMapping("/edituser/{id}")
 	public String userOne(@PathVariable Long id, Model model) {

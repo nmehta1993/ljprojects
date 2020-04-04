@@ -207,6 +207,15 @@ public class FrontController {
 		return "/user/list";
 	}
 	
+	
+	
+	@GetMapping("/productlist")
+	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+	public String productList(Model model) {
+		
+		return "/product/productlist";
+	}
+	
 	@GetMapping("address/list")
 	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 	public String addressList(Model model) {
@@ -230,6 +239,16 @@ public class FrontController {
 		model.addAttribute("userForm", new User());
 		model.addAttribute("roles", userService.roleList());
 	return "/user/form";
+	}
+	
+	
+
+	@GetMapping("/productform")
+	public String productForm(Model model) {
+		model.addAttribute("isNew", true);
+		
+		
+	return "/product/productform";
 	}
 	
 	

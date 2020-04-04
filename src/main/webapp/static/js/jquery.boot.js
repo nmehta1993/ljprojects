@@ -1,5 +1,9 @@
 $(function() {
 	
+	$("#productList").click(function() {
+			fetchProductList("productList");
+	});
+	
 	$("#userList").click(function() {
 		fetchList("user");
 	});
@@ -7,6 +11,8 @@ $(function() {
 	$("#addressList").click(function() {
 		fetchAddressList("address");
 	});
+	
+	
 });
 //add form ajax call for redirecting user form
 function addForm(type) {
@@ -18,6 +24,19 @@ function addForm(type) {
 		}
 	});
 }
+
+//add productform ajax call for redirecting user form
+function addProductForm(type) {
+	$.ajax({
+		type : "GET",
+		url : "/productform",
+		success : function(data) {
+			$(".inner-jsp").html(data);
+		}
+	});
+}
+
+
 //edit form ajax call for redirecting user form
 function editForm(type, id) {
 	alert("hi");
@@ -32,12 +51,12 @@ function editForm(type, id) {
 }
 
 function fetchList(type) {
-	alert("1");
 	modifyData(type+"/list");
 }
-
+function fetchProductList(type){
+	modifyProductData(type+"/productlist");
+}
 function fetchAddressList(type) {
-	alert("1");
 	modifyAddressData(type);
 }
 
@@ -54,6 +73,16 @@ function modifyAddressData(type) {
 	$.ajax({
 		type : "GET",
 		url : type+"/list",
+		success : function(data) {
+			$(".inner-jsp").html(data);
+		}
+	});
+}
+
+function modifyProductData(suffix){
+	$.ajax({
+		type : "GET",
+		url : "/productlist",
 		success : function(data) {
 			$(".inner-jsp").html(data);
 		}
