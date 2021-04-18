@@ -59,7 +59,7 @@ public class Role implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	@Enumerated(EnumType.STRING)
+	/*@Enumerated(EnumType.STRING)
 	 @NaturalId
 	 @Column(length = 60)
 	 private RoleName name;
@@ -71,7 +71,7 @@ public class Role implements Serializable {
 	}
 	public void setName(RoleName name) {
 		this.name = name;
-	}
+	}*/
 	public int getId() {
 		return id;
 	}
