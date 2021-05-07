@@ -1,6 +1,8 @@
 package com.ljproject.controller;
 
 import java.beans.PropertyEditorSupport;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.validation.Valid;
@@ -158,7 +160,7 @@ public class LoginController {
 	
 
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
+	public ModelAndView createNewUser(@Valid User user, Model model, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
 
 		User userExists = userService.findUserByEmail(user.getEmail());
@@ -173,12 +175,21 @@ public class LoginController {
 			char[] otp = otpService.genrateOtp();
 			String convertedOtp = new String(otp);
 			user.setOtp(convertedOtp);
+			Set<Role> roles= new HashSet<Role>();
+			Role role=new Role();
+			role.setRole("ROLE_ADMIN");
+			roles.add(role);
+			user.setRoles(roles);
+			
+			
+			
 			userService.saveUser(user);
 			
 			userService.sendEmailforApprove(user);
 			mailService.sendEmail(user);
 			modelAndView.addObject("successMessage", "User has been registered successfully");
 			modelAndView.addObject("user", new User());
+			
 			modelAndView.setViewName("registration");
 
 		}
